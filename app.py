@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 import platform
+from pathlib import Path
 from typing import Any
 
 import gradio as gr
@@ -64,6 +65,13 @@ api_app = FastAPI(
     description="Local Apple Silicon TTS API backed by MLX Audio models.",
     version="0.1.0",
 )
+
+APP_ICON_PATH = Path(__file__).parent / "docs" / "assets" / "mlx-tts-studio-icon.svg"
+APP_ICON_URL = "/favicon.ico?v=mlx-tts-studio-icon-1"
+APP_HEAD = f"""
+<link rel="icon" type="image/svg+xml" href="{APP_ICON_URL}" />
+<link rel="shortcut icon" type="image/svg+xml" href="{APP_ICON_URL}" />
+"""
 
 
 def request_text(body: SynthesisRequest) -> str:
@@ -271,8 +279,23 @@ def build_app() -> gr.Blocks:
     machine_label = f"{platform.machine()} / {memory_label}"
 
     with gr.Blocks(title="MLX TTS Studio", fill_height=True) as demo:
-        gr.Markdown(
-            f"# MLX TTS Studio\nApple Silicon MLX text-to-speech. `{machine_label}`"
+        gr.HTML(
+            f"""
+            <header style="display:flex;align-items:center;gap:14px;margin:0 0 18px;">
+              <img
+                src="{APP_ICON_URL}"
+                alt=""
+                aria-hidden="true"
+                style="width:52px;height:52px;border-radius:12px;flex:0 0 auto;"
+              />
+              <div>
+                <h1 style="margin:0 0 4px;font-size:28px;line-height:1.1;">MLX TTS Studio</h1>
+                <p style="margin:0;color:var(--body-text-color-subdued);">
+                  Apple Silicon MLX text-to-speech. <code>{machine_label}</code>
+                </p>
+              </div>
+            </header>
+            """
         )
 
         with gr.Row():
@@ -477,7 +500,13 @@ def build_app() -> gr.Blocks:
 def create_app() -> FastAPI:
     demo = build_app()
     demo.queue(default_concurrency_limit=1)
-    return gr.mount_gradio_app(api_app, demo, path="/")
+    return gr.mount_gradio_app(
+        api_app,
+        demo,
+        path="/",
+        favicon_path=str(APP_ICON_PATH),
+        head=APP_HEAD,
+    )
 
 
 app = create_app()
