@@ -1,8 +1,12 @@
 # MLX TTS Studio
 
+[![CI](https://github.com/rorystandley/mlx-tts-studio/actions/workflows/ci.yml/badge.svg)](https://github.com/rorystandley/mlx-tts-studio/actions/workflows/ci.yml)
+
 A local text-to-speech app for Apple Silicon Macs. It uses [MLX Audio](https://github.com/Blaizzy/mlx-audio) to run Hugging Face TTS models through MLX, with a Gradio UI for text, voices, sampling controls, reference audio, and saved audio output.
 
 MLX TTS Studio is standalone. It can be used directly in the browser or as a small local HTTP speech service for any other tool that can call a local endpoint.
+
+![MLX TTS Studio screenshot](docs/assets/mlx-tts-studio-screenshot.png)
 
 ## Requirements
 
@@ -104,6 +108,8 @@ uv run python -m py_compile app.py tts_service.py
 ```
 
 Do not commit model weights, generated audio, local `.env` files, or Hugging Face caches.
+
+GitHub Actions runs the same quality checks plus a lightweight API smoke test on pushes and pull requests. The smoke test does not download model weights.
 
 ## License
 

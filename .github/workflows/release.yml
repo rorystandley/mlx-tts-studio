@@ -1,0 +1,56 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  github-release:
+    name: Create GitHub Release
+    runs-on: macos-14
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Install dependencies
+        run: uv sync --locked
+
+      - name: Run release checks
+        run: |
+          uv run ruff format --check .
+          uv run ruff check .
+          uv run python -m py_compile app.py tts_service.py
+
+      - name: Create source archive
+        run: |
+          mkdir -p dist
+          git archive \
+            --format zip \
+            --output "dist/mlx-tts-studio-${GITHUB_REF_NAME}.zip" \
+            HEAD
+
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" \
+            "dist/mlx-tts-studio-${GITHUB_REF_NAME}.zip" \
+            --generate-notes \
+            --title "$GITHUB_REF_NAME"
