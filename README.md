@@ -1,6 +1,6 @@
 # MLX TTS Studio
 
-[![CI](https://github.com/rorystandley/mlx-tts-studio/actions/workflows/ci.yml/badge.svg)](https://github.com/rorystandley/mlx-tts-studio/actions/workflows/ci.yml)
+[![CI](https://github.com/rorystandley/mlx-tts-studio/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/rorystandley/mlx-tts-studio/actions/workflows/ci.yml)
 
 A local text-to-speech app for Apple Silicon Macs. It uses [MLX Audio](https://github.com/Blaizzy/mlx-audio) to run Hugging Face TTS models through MLX, with a Gradio UI for text, voices, sampling controls, reference audio, and saved audio output.
 
