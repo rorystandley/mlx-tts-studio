@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Tooling and editor state
+.ruff_cache/
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Local config and secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Generated audio and model artifacts
+outputs/
+*.wav
+*.flac
+*.mp3
+
+# Hugging Face / MLX caches should live outside the repository.
+.cache/
+models/

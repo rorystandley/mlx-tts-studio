@@ -1,0 +1,32 @@
+[project]
+name = "mlx-tts-studio"
+version = "0.1.0"
+description = "A local Apple Silicon text-to-speech app powered by MLX and Hugging Face open models."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+authors = [
+  { name = "Rory Standley", email = "rorystandley@gmail.com" },
+]
+license = "MIT"
+keywords = ["apple-silicon", "huggingface", "mlx", "text-to-speech", "tts"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Framework :: FastAPI",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: MacOS",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Multimedia :: Sound/Audio :: Speech",
+]
+dependencies = [
+  "fastapi>=0.115",
+  "gradio>=5.50,<6",
+  "huggingface-hub>=0.35",
+  "mlx-audio[tts]>=0.4.2",
+  "soundfile>=0.13",
+  "uvicorn>=0.30",
+]
+
+[dependency-groups]
+dev = [
+  "ruff>=0.13",
+]
