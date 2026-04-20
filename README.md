@@ -88,6 +88,39 @@ curl -X POST http://127.0.0.1:7860/synthesize \
   -d '{"input":"Hello from local MLX TTS.","model":"mlx-community/Kokoro-82M-bf16","voice":"af_heart","lang_code":"a","audio_format":"wav"}'
 ```
 
+## Using this from another local app
+
+Start MLX TTS Studio first, then call it over localhost from your app. For most local apps, `POST /synthesize` is the simplest integration because it returns JSON with an `audio_path` that another process on the same machine can play.
+
+```bash
+curl -s -X POST http://127.0.0.1:7860/synthesize \
+  -H 'Content-Type: application/json' \
+  -d '{"input":"Your app can play this returned file.","model":"mlx-community/Kokoro-82M-bf16","voice":"af_heart","lang_code":"a","audio_format":"wav"}'
+```
+
+Example response:
+
+```json
+{
+  "audio_path": "/path/to/mlx-tts-studio/outputs/example.wav",
+  "duration_seconds": 2.3,
+  "model": "mlx-community/Kokoro-82M-bf16",
+  "voice": "af_heart",
+  "format": "wav"
+}
+```
+
+If your client expects audio bytes instead of a local file path, use the OpenAI-style endpoint:
+
+```bash
+curl -X POST http://127.0.0.1:7860/v1/audio/speech \
+  -H 'Content-Type: application/json' \
+  -d '{"input":"Return this as audio bytes.","model":"mlx-community/Kokoro-82M-bf16","voice":"af_heart","response_format":"wav"}' \
+  --output speech.wav
+```
+
+Keep requests serialized from the client side if you are using large models. The server also uses an internal generation lock so only one synthesis runs at a time.
+
 ## Tips
 
 - Use `Download/load selected model` before the first Voxtral or KugelAudio generation.
