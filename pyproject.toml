@@ -23,7 +23,7 @@ dependencies = [
   "huggingface-hub>=0.35",
   "mlx-audio[tts]>=0.4.2",
   "soundfile>=0.13",
-  "uvicorn>=0.30",
+  "uvicorn>=0.46.0",
 ]
 
 [dependency-groups]
