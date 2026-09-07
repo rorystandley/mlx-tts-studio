@@ -318,7 +318,7 @@ wheels = [
 
 [[package]]
 name = "gradio"
-version = "6.12.0"
+version = "6.26.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "anyio" },
@@ -349,14 +349,14 @@ dependencies = [
     { name = "typing-extensions" },
     { name = "uvicorn" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/9c/a3/d7b0f752d010a9ccf7ab938d787c912d7ebb43cd3424754e0266a53b4273/gradio-6.12.0.tar.gz", hash = "sha256:5a7808e7ef82cdcb711608275d6779d3368072f93777d649661ffae968af8107", size = 35955906, upload-time = "2026-04-10T20:57:02.335Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/44/f5/304137dcc70a4d4476fff117f2faa60e9e98e61e32ed5c2fae2754579ee3/gradio-6.26.0.tar.gz", hash = "sha256:f2a6a65580ce480ed51c0caacf79f159da000a954c54b1518716826f78bfb558", size = 45131873, upload-time = "2026-08-24T20:49:35.819Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/dd/30/d7c61ec8c3f4ad337e20090d771c20d4b61e84aede8d92dc784ab32efa3c/gradio-6.12.0-py3-none-any.whl", hash = "sha256:5587f9ab7b8bfb757e0de9dffebadc63bb354dec5dde22fd7f0266df4b8bd271", size = 19633159, upload-time = "2026-04-10T20:56:59.084Z" },
+    { url = "https://files.pythonhosted.org/packages/c6/06/6b708de7ca30f47ffb3a8f2d02173e6fa0cc6cf99442158f74b876338728/gradio-6.26.0-py3-none-any.whl", hash = "sha256:54c5c4bfe7782e1773c2b7d7be128036df8b0dd6ca303c186ad6443280e1063b", size = 31262369, upload-time = "2026-08-24T20:49:31.532Z" },
 ]
 
 [[package]]
 name = "gradio-client"
-version = "2.4.1"
+version = "2.6.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "fsspec" },
@@ -365,9 +365,9 @@ dependencies = [
     { name = "packaging" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/5f/5f/d480fb5e61cf47eaae6c4de2c84a5f130ebcaa2a0a4f36f9f494f53eea35/gradio_client-2.4.1.tar.gz", hash = "sha256:c08783eb3dbdfd6d567bfd912a432fd8ab37b9e633b03e794cc1a0fa105a6d31", size = 58611, upload-time = "2026-04-10T20:57:13.174Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/85/32/ec28ca6b19b22c7ea7f4232078f856790e565f5e87f32cb15a5e406b0ba1/gradio_client-2.6.1.tar.gz", hash = "sha256:0e605bf8683a27583868b933a083e84706b974404815d9795370ef8a62584f4e", size = 61673, upload-time = "2026-08-24T20:49:48.07Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/68/72/a4611ed242a7936d38bd5262c6071fff8dda86cab1c06172a1e372783772/gradio_client-2.4.1-py3-none-any.whl", hash = "sha256:e6cef91ddee06e6a10788c5119977a35aee987968e7a87b0c4716809172c33d4", size = 59563, upload-time = "2026-04-10T20:57:11.774Z" },
+    { url = "https://files.pythonhosted.org/packages/36/1b/e31b3776a4892fac8e2f980265a462f642df84bf488d5d667ef821a801af/gradio_client-2.6.1-py3-none-any.whl", hash = "sha256:df3752925fbaaa56f7bfeeb0064ae23591ec3976432443748dd663a9729ef23b", size = 62558, upload-time = "2026-08-24T20:49:46.346Z" },
 ]
 
 [[package]]
@@ -1549,15 +1549,15 @@ wheels = [
 
 [[package]]
 name = "starlette"
-version = "0.52.1"
+version = "1.6.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "anyio" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/c4/68/79977123bb7be889ad680d79a40f339082c1978b5cfcf62c2d8d196873ac/starlette-0.52.1.tar.gz", hash = "sha256:834edd1b0a23167694292e94f597773bc3f89f362be6effee198165a35d62933", size = 2653702, upload-time = "2026-01-18T13:34:11.062Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/b5/b4/205b0d5241d934e8add0c38aa924c4f9fb7330834ff11e5444db964ec3f9/starlette-1.6.0.tar.gz", hash = "sha256:d4e3ac5e546444960c710297a3c9fc3f7ebae1b7e963f3d36173b49da535be9b", size = 2716969, upload-time = "2026-08-08T18:27:57.512Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/81/0d/13d1d239a25cbfb19e740db83143e95c772a1fe10202dda4b76792b114dd/starlette-0.52.1-py3-none-any.whl", hash = "sha256:0029d43eb3d273bc4f83a08720b4912ea4b071087a3b48db01b7c839f7954d74", size = 74272, upload-time = "2026-01-18T13:34:09.188Z" },
+    { url = "https://files.pythonhosted.org/packages/c8/cb/6a6a47d5b464bd08695d254f3da6e7986cc70c9fa5d778eda57538edfe56/starlette-1.6.0-py3-none-any.whl", hash = "sha256:a86dd39d14bb45f85a3d18525215a9ef0cfd1f192ac793220e72598c90335f0c", size = 75969, upload-time = "2026-08-08T18:27:56.196Z" },
 ]
 
 [[package]]
