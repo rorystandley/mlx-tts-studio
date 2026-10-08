@@ -20,7 +20,6 @@ import soundfile as sf
 from mlx_audio.tts.generate import generate_audio
 from mlx_audio.tts.utils import load_model
 
-
 ROOT = Path(__file__).resolve().parent
 OUTPUT_DIR = ROOT / "outputs"
 OUTPUT_DIR.mkdir(exist_ok=True)
@@ -275,7 +274,7 @@ def get_unified_memory_gb() -> float | None:
             text=True,
         )
         return int(result.stdout.strip()) / 1024**3
-    except Exception:
+    except (OSError, subprocess.CalledProcessError, ValueError):
         return None
 
 
@@ -326,7 +325,7 @@ def directory_size(path: Path) -> int:
             text=True,
         )
         return int(result.stdout.split()[0]) * 1024
-    except Exception:
+    except (OSError, subprocess.CalledProcessError, ValueError, IndexError):
         total = 0
         for item in path.rglob("*"):
             try:
@@ -682,7 +681,7 @@ def warm_model(model_id: str, preset_label: str | None = None) -> str:
                 if preset:
                     print(f"Preset: {preset.label}")
                 get_model(model_id)
-        except Exception:
+        except Exception:  # noqa: BLE001 - attach logs and re-raise any load failure
             load_output = clean_log(load_log.getvalue())
             if load_output:
                 status_lines.append(load_output)
@@ -703,7 +702,7 @@ def audio_duration_seconds(audio_path: Path) -> float | None:
     try:
         info = sf.info(str(audio_path))
         return round(info.frames / info.samplerate, 3)
-    except Exception:
+    except Exception:  # noqa: BLE001 - missing duration must not fail synthesis
         return None
 
 
@@ -796,7 +795,7 @@ def synthesize_text(
             generation_output = clean_log(generation_log.getvalue())
             if generation_output:
                 status_lines.append(generation_output)
-        except Exception:
+        except Exception:  # noqa: BLE001 - record any generation error, keep written audio
             load_output = clean_log(load_log.getvalue())
             if load_output and load_output not in status_lines:
                 status_lines.append(load_output)

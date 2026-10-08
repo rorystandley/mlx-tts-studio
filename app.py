@@ -217,7 +217,7 @@ def download_model_ui(preset_label: str, model_id: str):
     yield f"Preparing {model_id}."
     try:
         yield warm_model(model_id, preset_label)
-    except Exception as exc:
+    except Exception as exc:  # noqa: BLE001 - UI must report any model-prep failure
         yield str(exc)
 
 
@@ -263,7 +263,7 @@ def generate_speech(
             audio_format=audio_format,
             preset_label=preset_label,
         )
-    except Exception as exc:
+    except Exception as exc:  # noqa: BLE001 - UI must report any synthesis failure
         yield None, None, str(exc)
         return
 
